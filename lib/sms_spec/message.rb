@@ -6,7 +6,8 @@ module SmsSpec
     include SmsSpec::Util
 
     def initialize(opts={})
-      @number = sanitize opts[:number]
+      @to = sanitize opts[:to]
+      @from = sanitize opts[:from]
       @body = opts[:body]
     end
   end

@@ -36,7 +36,7 @@ module SmsSpec
     end
 
     def self.messages_for(phone_number)
-      @@messages.select {|m| m.number == sanitize(phone_number)}
+      @@messages.select {|m| m[:to] == sanitize(phone_number)}
     end
 
   end
