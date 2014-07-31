@@ -9,8 +9,9 @@ class Twilio::REST::Client
 
     def create(opts={})
       to = opts[:to]
+      from = opts[:from]
       body = opts[:body]
-      add_message SmsSpec::Message.new(:number => to, :body => body)
+      add_message SmsSpec::Message.new(:to => to, :from => from, :body => body)
     end
   end
 
@@ -48,13 +49,13 @@ class Twilio::REST::Client
   end
 
   class PhoneNumbers
-    
+
     def get(country)
-     return  CountryNumbers.new   
+     return  CountryNumbers.new
     end
-    
+
     def create(number)
-     
+
        friendly_number ="(%s) %s-%s" %[number[2..4], number[5..7], number[8..11]]
 
        return   Number.new({
@@ -84,14 +85,14 @@ class Twilio::REST::Client
 
   class CountryNumbers
     def local
-      return LocalNumbers.new 
+      return LocalNumbers.new
     end
   end
 
   class LocalNumbers
     def list(opt={})
       area_code = opt[:area_code]
-     if area_code.nil? ||  area_code.size != 3 
+     if area_code.nil? ||  area_code.size != 3
        return []
      else
         return [

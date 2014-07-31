@@ -3,8 +3,8 @@ require 'forwardable'
 module SmsSpec
   module Helpers
     extend Forwardable
-    
-    def_delegators :"SmsSpec::Data", 
+
+    def_delegators :"SmsSpec::Data",
       :messages,
       :add_message,
       :set_current_number,
